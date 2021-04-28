@@ -1,0 +1,61 @@
+查容器
+docker container  ls  -a == docker ps
+docker image | grep <name>
+docker history <image:version> --format "table{{.ID}}\t{{.CreatedBy}}" --no-trunc
+
+查详情
+docker inspect <containerId>
+
+查内存
+docker stats <dokerId>
+
+创建容器
+docker run -it  <imageName>
+
+停容器
+docker stop <containerId>
+docker start <comtainer name>
+
+删容器
+docker rm <containerId>
+docker container ls -aq == docker conatiner la -a | awk {'print$1'}
+快捷方式 docker rm  $(docker container ls -f  ‘status=exited’ -q)
+
+删镜像
+docker rmi <image name>
+
+镜像构建、TAG、推送
+（ . 代表代表使用当前目录下的Dockerfile）
+docker build -t  <imageName> .
+docker tag <imageName>:<tag>    <docker repo>/<new imageName>:<new tag>
+docker push <new imageName>
+
+Dockerfile
+推荐使用WORKDIR，不用RUN cd！尽量使用绝对目录。
+ADD and COPY  
+大部分情况COPY优于ADD（额外解压功能），添加远程文件或目录用curl或wget。
+CMD只执行最后一行，而且会被覆盖docker run <cmd>
+
+创建Dockerfile
+FROM hub.mooc.com/k8s/openjdk : 8-hre-alpine
+COPY target/spring-boot-demo.jar  /spring-web.jar
+ENTRPOINT  ["java","-jar","/spring-web.jar"]
+
+用户授权（去sudo）
+sudo groupadd docker
+sudo gpasswd -a <username> docker
+sudo service docker restart
+exit
+
+进入容器执行命令
+docker exec -it <containerId> /bin/bash
+docker exec -it <containerId> ip a
+docker exec -it <containerId> javac
+
+查日志
+docker logs -f <container>
+
+
+
+
+
