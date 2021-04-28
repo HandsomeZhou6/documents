@@ -1,0 +1,45 @@
+LINUX
+
+查监听端口
+netstat -ntlp |grep <port>
+
+查服务连通性
+ping <ip>
+
+查服务可用性
+telnet  <host> <port>
+
+查目录下字符
+grep -rin  '<str>'  <target path>        grep -v <str> 取反
+
+搜历史命令
+Ctrl+ r
+
+上传文件
+scp <sourceFile> <user>@<node-ip>:<targetPath>
+
+请求服务
+curl <service-ip>:<port>        curl <node-ip>:<port>
+
+比较内容
+vimdiff  <file1> <file2>
+
+压缩文件
+zip   <xxx.zip>  <file>        gzip  <file>        gzip  -c  <file>     ps:（-c 保留源文件）
+压缩目录
+zip -r <xxx.zip> <dir>        gzip -r <dir>    (只压缩子文件)
+解压缩
+unzip <xxx.zip>
+
+打包
+tar -cvf  <xxx.tar>  <file> ps: -c 打包，-v 显示过程，-f 指定生成文件名        tar  -zcvf  <xxx.tar.gz>  <file>            tar  -jcvf  <xxx.tar.bz2>  <file>
+解打包
+tar  -xvf  <xxx.tar>        tar  -zxvf  <xxx.tar.gz>        tar  -jxvf   <xxx.tar.bz2>
+
+查用户
+w     who     last     lastlog
+
+系统信息获取
+
+
+
